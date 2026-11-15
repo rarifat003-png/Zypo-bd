@@ -5,219 +5,218 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zypo - Smart Gadgets & Lifestyle Collection</title>
   <meta name="description" content="Zypo Bangladesh - সেরা মূল্যে অরিজিনাল স্মার্ট গ্যাজেট ও লাইফস্টাইল কালেকশন। সারা বাংলাদেশে ক্যাশ অন ডেলিভারি।">
-  <meta property="og:title" content="Zypo - Online Gadget Store">
-  <meta property="og:description" content="সেরা মূল্যে প্রিমিয়াম এবং টেকসই গ্যাজেটের নির্ভরযোগ্য ঠিকানা।">
-  <meta property="og:url" content="[https://zypo-bd.vercel.app/](https://zypo-bd.vercel.app/)">
-  <meta property="og:type" content="website">
-  <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            zypoYellow: '#FFC800',
-            zypoDark: '#171717',
-            zypoGray: '#F7F7F7',
-          }
-        }
-      }
+  <style>
+    :root {
+      --yellow: #FFC800;
+      --dark: #171717;
+      --gray: #F7F7F7;
+      --white: #FFFFFF;
+      --border: #E5E7EB;
     }
-  </script>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+    body { background: var(--gray); color: var(--dark); padding-bottom: 70px; }
+    .top-bar { background: var(--dark); color: var(--white); text-align: center; padding: 8px 12px; font-size: 13px; }
+    .top-bar span { color: var(--yellow); font-weight: 700; }
+    header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 40; }
+    .nav-container { max-width: 1150px; margin: 0 auto; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .logo { display: flex; align-items: center; gap: 6px; text-decoration: none; color: var(--dark); }
+    .logo-badge { background: var(--yellow); color: var(--dark); font-weight: 900; padding: 4px 10px; border-radius: 6px; font-size: 18px; }
+    .logo-text { font-weight: 800; font-size: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .search-box { flex: 1; max-width: 420px; }
+    .search-box input { width: 100%; background: var(--gray); border: 1px solid #D1D5DB; border-radius: 8px; padding: 8px 14px; font-size: 14px; outline: none; }
+    .search-box input:focus { border-color: var(--dark); }
+    .cart-btn { position: relative; background: var(--gray); border: 1px solid var(--border); border-radius: 50%; width: 42px; height: 42px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; }
+    .cart-badge { position: absolute; top: -4px; right: -4px; background: var(--yellow); color: var(--dark); font-size: 11px; font-weight: 900; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .hero { background: var(--white); border-bottom: 1px solid var(--border); padding: 32px 16px; text-align: center; }
+    .hero-tag { background: #FFF8DB; color: var(--dark); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
+    .hero h1 { font-size: 26px; font-weight: 900; margin-bottom: 8px; }
+    .hero h1 span { background: var(--yellow); padding: 2px 8px; border-radius: 6px; }
+    .hero p { color: #525252; font-size: 14px; }
+    .filter-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 10px 16px; position: sticky; top: 67px; z-index: 30; }
+    .filter-inner { max-width: 1150px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .cat-list { display: flex; gap: 8px; overflow-x: auto; }
+    .cat-btn { background: var(--gray); color: #374151; border: none; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+    .cat-btn.active { background: var(--dark); color: var(--white); }
+    .sort-select { background: var(--gray); border: 1px solid #D1D5DB; border-radius: 8px; padding: 6px 10px; font-size: 12px; font-weight: 700; }
+    main { max-width: 1150px; margin: 0 auto; padding: 24px 16px; }
+    .section-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .section-head h2 { font-size: 20px; font-weight: 900; }
+    .count-pill { background: var(--white); border: 1px solid var(--border); padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; color: #525252; }
+    .status-box { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 48px 16px; text-align: center; color: #525252; font-weight: 600; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    @media (min-width: 768px) { .grid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+    @media (min-width: 1024px) { .grid { grid-template-columns: repeat(4, 1fr); } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; transition: border-color 0.2s; }
+    .card:hover { border-color: var(--dark); }
+    .card-img-wrap { position: relative; aspect-ratio: 1 / 1; background: var(--gray); border-radius: 8px; overflow: hidden; margin-bottom: 10px; cursor: pointer; }
+    .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .badge-cat { position: absolute; top: 8px; left: 8px; background: var(--yellow); color: var(--dark); font-size: 10px; font-weight: 900; padding: 2px 7px; border-radius: 4px; }
+    .badge-out { position: absolute; bottom: 8px; right: 8px; background: #DC2626; color: var(--white); font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; }
+    .card-title { font-size: 14px; font-weight: 700; line-height: 1.35; margin-bottom: 10px; cursor: pointer; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .price-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .price-now { font-size: 16px; font-weight: 900; }
+    .price-old { font-size: 12px; color: #9CA3AF; text-decoration: line-through; margin-left: 6px; }
+    .detail-link { background: none; border: none; color: #6B7280; font-size: 11px; font-weight: 700; cursor: pointer; }
+    .add-btn { width: 100%; background: var(--dark); color: var(--yellow); border: none; border-radius: 8px; padding: 9px; font-size: 12px; font-weight: 700; cursor: pointer; }
+    .add-btn:disabled { background: #E5E7EB; color: #9CA3AF; cursor: not-allowed; }
+    .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 50; display: none; }
+    .overlay.open { display: flex; }
+    .drawer { background: var(--white); width: 100%; max-width: 440px; height: 100%; margin-left: auto; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; overflow-y: auto; }
+    .modal-box { background: var(--white); width: 100%; max-width: 680px; margin: auto; border-radius: 16px; padding: 20px; max-height: 90vh; overflow-y: auto; position: relative; }
+    .close-btn { background: var(--gray); border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 20px; font-weight: 700; cursor: pointer; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+    .form-group input, .form-group textarea { width: 100%; background: var(--gray); border: 1px solid #D1D5DB; border-radius: 8px; padding: 9px 12px; font-size: 13px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .wa-btn { width: 100%; background: #16A34A; color: var(--white); border: none; border-radius: 10px; padding: 12px; font-size: 14px; font-weight: 700; cursor: pointer; margin-top: 10px; text-align: center; text-decoration: none; display: block; }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; background: var(--gray); padding: 10px; border-radius: 8px; margin-bottom: 8px; font-size: 13px; }
+    .qty-btn { background: var(--white); border: 1px solid #D1D5DB; width: 24px; height: 24px; border-radius: 4px; font-weight: 700; cursor: pointer; }
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 8px 0; z-index: 40; }
+    .bottom-nav a, .bottom-nav button { background: none; border: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; font-weight: 700; color: var(--dark); text-decoration: none; cursor: pointer; }
+    @media (min-width: 768px) { .bottom-nav { display: none; } body { padding-bottom: 0; } }
+    footer { background: var(--dark); color: var(--white); padding: 36px 16px 24px; margin-top: 48px; font-size: 13px; }
+    .footer-grid { max-width: 1150px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+    .footer-title { color: var(--yellow); font-weight: 800; margin-bottom: 10px; font-size: 12px; text-transform: uppercase; }
+    .footer-text { color: #9CA3AF; line-height: 1.6; font-size: 12px; }
+  </style>
 </head>
-<body class="bg-zypoGray text-zypoDark font-sans antialiased pb-20 md:pb-0">
+<body>
 
-  <!-- Top Announcement Bar -->
-  <div class="bg-zypoDark text-white text-center py-2 text-xs md:text-sm px-4 font-medium tracking-wide">
-    🎉 Zypo-তে স্বাগতম! সারা বাংলাদেশে ক্যাশ অন ডেলিভারি। WhatsApp: <span class="text-zypoYellow font-bold">+8801994444996</span>
+  <div class="top-bar">
+    🎉 Zypo-তে স্বাগতম! সারা বাংলাদেশে ক্যাশ অন ডেলিভারি। WhatsApp: <span>+8801994444996</span>
   </div>
 
-  <!-- Header -->
-  <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-      <a href="#" class="flex items-center space-x-1.5">
-        <span class="bg-zypoYellow text-zypoDark font-black px-2.5 py-1 rounded text-lg tracking-tight">Z</span>
-        <span class="font-extrabold text-xl tracking-wide uppercase">ypo</span>
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <span class="logo-badge">Z</span>
+        <span class="logo-text">ypo</span>
       </a>
-
-      <!-- Search Bar (Desktop) -->
-      <div class="hidden md:flex items-center flex-1 max-w-md mx-8">
-        <div class="relative w-full">
-          <input type="text" id="search-input" oninput="filterProducts()" placeholder="পণ্য খুঁজুন (যেমন: Clock, Speaker, WiFi)..." class="w-full bg-zypoGray border border-gray-300 rounded-lg py-2 pl-4 pr-10 text-sm focus:outline-none focus:border-zypoDark transition">
-          <span class="absolute right-3 top-2.5 text-gray-400">🔍</span>
-        </div>
+      <div class="search-box">
+        <input type="text" id="search-input" oninput="filterProducts()" placeholder="পণ্য খুঁজুন (যেমন: Clock, Speaker, WiFi)...">
       </div>
-
-      <!-- Cart Button -->
-      <button type="button" onclick="toggleCart()" class="relative p-2.5 bg-zypoGray rounded-full hover:bg-gray-200 transition flex items-center justify-center">
+      <button type="button" class="cart-btn" onclick="toggleCart()">
         🛒
-        <span id="cart-count" class="absolute -top-1 -right-1 bg-zypoYellow text-zypoDark text-xs font-black rounded-full h-5 w-5 flex items-center justify-center">0</span>
+        <span id="cart-count" class="cart-badge">0</span>
       </button>
-    </div>
-
-    <!-- Mobile Search Bar -->
-    <div class="md:hidden px-4 pb-3">
-      <div class="relative w-full">
-        <input type="text" id="mobile-search-input" oninput="filterProducts()" placeholder="পণ্য খুঁজুন..." class="w-full bg-zypoGray border border-gray-300 rounded-lg py-2 pl-4 pr-10 text-sm focus:outline-none focus:border-zypoDark">
-        <span class="absolute right-3 top-2.5 text-gray-400">🔍</span>
-      </div>
     </div>
   </header>
 
-  <!-- Hero Banner -->
-  <section class="bg-white border-b border-gray-200 py-8 md:py-10 px-4 text-center">
-    <div class="max-w-3xl mx-auto">
-      <span class="bg-zypoYellow/30 text-zypoDark text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">অরিজিনাল গ্যাজেট শপ</span>
-      <h1 class="text-2xl md:text-4xl font-black mt-3 mb-2 tracking-tight">
-        স্মার্ট গ্যাজেট ও লাইফস্টাইল কালেকশন <span class="bg-zypoYellow px-2 py-0.5 rounded">Zypo</span>
-      </h1>
-      <p class="text-gray-600 text-sm md:text-base">সেরা মূল্যে প্রিমিয়াম এবং টেকসই গ্যাজেটের নির্ভরযোগ্য ঠিকানা।</p>
-    </div>
+  <section class="hero">
+    <span class="hero-tag">অরিজিনাল গ্যাজেট শপ</span>
+    <h1>স্মার্ট গ্যাজেট ও লাইফস্টাইল কালেকশন <span>Zypo</span></h1>
+    <p>সেরা মূল্যে প্রিমিয়াম এবং টেকসই গ্যাজেটের নির্ভরযোগ্য ঠিকানা।</p>
   </section>
 
-  <!-- Dynamic Category & Sort Bar -->
-  <div class="bg-white border-b border-gray-200 sticky top-[61px] md:top-[65px] z-30">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-      <div id="category-tabs" class="overflow-x-auto flex space-x-2">
-        <button type="button" onclick="setCategory('all')" data-cat="all" class="category-btn bg-zypoDark text-white px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition">সকল পণ্য</button>
+  <div class="filter-bar">
+    <div class="filter-inner">
+      <div id="category-tabs" class="cat-list">
+        <button type="button" onclick="setCategory('all')" data-cat="all" class="cat-btn active">সকল পণ্য</button>
       </div>
-      <div class="flex items-center space-x-2 shrink-0">
-        <select id="sort-select" onchange="filterProducts()" class="bg-zypoGray border border-gray-300 rounded-lg px-3 py-1.5 text-xs font-bold text-zypoDark focus:outline-none">
-          <option value="default">সর্ট করুন: ডিফল্ট</option>
-          <option value="low-high">দাম: কম থেকে বেশি</option>
-          <option value="high-low">দাম: বেশি থেকে কম</option>
-        </select>
-      </div>
+      <select id="sort-select" class="sort-select" onchange="filterProducts()">
+        <option value="default">সর্ট করুন: ডিফল্ট</option>
+        <option value="low-high">দাম: কম থেকে বেশি</option>
+        <option value="high-low">দাম: বেশি থেকে কম</option>
+      </select>
     </div>
   </div>
 
-  <!-- Main Product Section -->
-  <main class="max-w-6xl mx-auto px-4 py-8">
-    <div class="flex justify-between items-center mb-6">
-      <h2 class="text-lg md:text-xl font-black tracking-tight text-zypoDark">আমাদের পণ্যসমূহ</h2>
-      <span id="product-count" class="text-xs font-bold text-gray-500 bg-white px-2.5 py-1 rounded-md border">লোড হচ্ছে...</span>
-    </div>
-    
-    <!-- Status & Loading Screen -->
-    <div id="status-msg" class="text-center py-16 text-gray-500 font-medium bg-white rounded-2xl border border-gray-200">
-      <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-zypoYellow border-t-transparent mb-3"></div>
-      <p>স্টোর থেকে প্রোডাক্ট লোড করা হচ্ছে...</p>
+  <main>
+    <div class="section-head">
+      <h2>আমাদের পণ্যসমূহ</h2>
+      <span id="product-count" class="count-pill">লোড হচ্ছে...</span>
     </div>
 
-    <!-- Product Grid -->
-    <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"></div>
+    <div id="status-msg" class="status-box">
+      স্টোর থেকে প্রোডাক্ট লোড করা হচ্ছে, একটু অপেক্ষা করুন...
+    </div>
+
+    <div id="product-grid" class="grid"></div>
   </main>
 
-  <!-- Quick View Product Modal -->
-  <div id="product-modal" class="fixed inset-0 bg-black/60 hidden z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-5 md:p-6 relative">
-      <button type="button" onclick="closeProductModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-zypoGray flex items-center justify-center text-lg font-bold hover:bg-gray-200">&times;</button>
-      <div id="modal-content" class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start"></div>
+  <!-- Quick View Modal -->
+  <div id="product-modal" class="overlay" onclick="if(event.target===this) closeProductModal()">
+    <div class="modal-box">
+      <div style="display:flex; justify-content:flex-end; margin-bottom:10px;">
+        <button type="button" class="close-btn" onclick="closeProductModal()">&times;</button>
+      </div>
+      <div id="modal-content"></div>
     </div>
   </div>
 
   <!-- Cart & Checkout Drawer -->
-  <div id="cart-drawer" class="fixed inset-0 bg-black/60 hidden z-50 flex justify-end">
-    <div class="bg-white w-full max-w-lg h-full p-5 md:p-6 flex flex-col justify-between overflow-y-auto">
+  <div id="cart-drawer" class="overlay" onclick="if(event.target===this) toggleCart()">
+    <div class="drawer">
       <div>
-        <div class="flex justify-between items-center border-b border-gray-200 pb-4">
-          <h3 class="text-lg font-black tracking-tight">আপনার শপিং কার্ট ও অর্ডার</h3>
-          <button type="button" onclick="toggleCart()" class="text-2xl font-bold text-gray-400 hover:text-zypoDark">&times;</button>
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:12px; margin-bottom:14px;">
+          <h3 style="font-size:18px; font-weight:900;">আপনার শপিং কার্ট ও অর্ডার</h3>
+          <button type="button" class="close-btn" onclick="toggleCart()">&times;</button>
         </div>
 
-        <!-- Cart Items List -->
-        <div id="cart-items" class="my-4 space-y-3 max-h-[32vh] overflow-y-auto pr-1"></div>
+        <div id="cart-items" style="max-height:240px; overflow-y:auto;"></div>
 
-        <!-- Checkout Form -->
-        <div class="mt-4 pt-4 border-t border-gray-200 space-y-3">
-          <h4 class="text-xs font-black uppercase text-gray-500 tracking-wider">ডেলিভারির তথ্য</h4>
-          <input type="text" id="cust-name" placeholder="আপনার সম্পূর্ণ নাম *" class="w-full bg-zypoGray border border-gray-300 rounded-lg p-2.5 text-sm focus:outline-none focus:border-zypoDark">
-          <input type="tel" id="cust-phone" placeholder="মোবাইল নম্বর (যেমন: 017XXXXXXXX) *" class="w-full bg-zypoGray border border-gray-300 rounded-lg p-2.5 text-sm focus:outline-none focus:border-zypoDark">
-          <div class="grid grid-cols-2 gap-2">
-            <input type="text" id="cust-district" placeholder="জেলা (যেমন: Dhaka) *" class="w-full bg-zypoGray border border-gray-300 rounded-lg p-2.5 text-sm focus:outline-none focus:border-zypoDark">
-            <input type="text" id="cust-upazila" placeholder="উপজেলা / থানা *" class="w-full bg-zypoGray border border-gray-300 rounded-lg p-2.5 text-sm focus:outline-none focus:border-zypoDark">
+        <div class="form-group">
+          <strong style="font-size:12px; color:#6B7280;">ডেলিভারির তথ্য</strong>
+          <input type="text" id="cust-name" placeholder="আপনার সম্পূর্ণ নাম *">
+          <input type="tel" id="cust-phone" placeholder="মোবাইল নম্বর (যেমন: 017XXXXXXXX) *">
+          <div class="form-row">
+            <input type="text" id="cust-district" placeholder="জেলা (যেমন: Dhaka) *">
+            <input type="text" id="cust-upazila" placeholder="উপজেলা / থানা *">
           </div>
-          <textarea id="cust-address" rows="2" placeholder="পূর্ণ ঠিকানা (রোড, বাসা নং, এলাকা) *" class="w-full bg-zypoGray border border-gray-300 rounded-lg p-2.5 text-sm focus:outline-none focus:border-zypoDark resize-none"></textarea>
+          <textarea id="cust-address" rows="2" placeholder="পূর্ণ ঠিকানা (রোড, বাসা নং, এলাকা) *"></textarea>
         </div>
       </div>
 
-      <!-- Cart Totals & WhatsApp Button -->
-      <div class="border-t border-gray-200 pt-4 mt-4 bg-white">
-        <div class="space-y-1.5 text-sm mb-4">
-          <div class="flex justify-between text-gray-600">
-            <span>সাবটোটাল:</span>
-            <span id="cart-subtotal" class="font-bold">৳0</span>
-          </div>
-          <div class="flex justify-between text-gray-600">
-            <span>ডেলিভারি চার্জ (সারা বাংলাদেশ):</span>
-            <span class="font-bold">৳100</span>
-          </div>
-          <div class="flex justify-between text-base font-black text-zypoDark border-t border-gray-100 pt-2">
-            <span>মোট প্রদেয়:</span>
-            <span id="cart-total" class="text-green-600">৳100</span>
-          </div>
+      <div style="border-top:1px solid var(--border); padding-top:14px; margin-top:14px;">
+        <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;">
+          <span>সাবটোটাল:</span>
+          <strong id="cart-subtotal">৳0</strong>
         </div>
-        <button type="button" onclick="checkoutWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl transition flex items-center justify-center space-x-2 text-sm md:text-base">
-          <span>💬 WhatsApp-এ অর্ডার পাঠান</span>
-        </button>
-        <p class="text-[11px] text-gray-400 text-center mt-2">WhatsApp-এ মেসেজ পাঠানোর পর আমাদের প্রতিনিধি কল করে অর্ডার নিশ্চিত করবেন।</p>
+        <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:8px;">
+          <span>ডেলিভারি চার্জ (সারা বাংলাদেশ):</span>
+          <strong>৳100</strong>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:16px; font-weight:900; border-top:1px solid var(--border); padding-top:8px;">
+          <span>মোট প্রদেয়:</span>
+          <span id="cart-total" style="color:#16A34A;">৳100</span>
+        </div>
+        <button type="button" class="wa-btn" onclick="checkoutWhatsApp()">💬 WhatsApp-এ অর্ডার পাঠান</button>
       </div>
     </div>
   </div>
 
-  <!-- Minimal Sticky Mobile Bottom Navigation -->
-  <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40 px-6 py-3 flex justify-between items-center">
-    <a href="#" class="flex flex-col items-center text-xs font-bold text-zypoDark">
-      <span class="text-base">🏠</span>
-      <span>হোম</span>
-    </a>
-    <button type="button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center text-xs font-bold text-gray-500 hover:text-zypoDark">
-      <span class="text-base">🔍</span>
-      <span>সার্চ</span>
-    </button>
-    <button type="button" onclick="toggleCart()" class="flex flex-col items-center text-xs font-bold text-gray-500 hover:text-zypoDark">
-      <span class="text-base">🛒</span>
-      <span>কার্ট</span>
-    </button>
-    <a href="[https://wa.me/8801994444996](https://wa.me/8801994444996)" target="_blank" rel="noopener" class="flex flex-col items-center text-xs font-bold text-green-600">
-      <span class="text-base">💬</span>
-      <span>সাপোর্ট</span>
-    </a>
+  <!-- Mobile Bottom Nav -->
+  <div class="bottom-nav">
+    <a href="#"><span>🏠</span><span>হোম</span></a>
+    <button type="button" onclick="window.scrollTo({top:0, behavior:'smooth'})"><span>🔍</span><span>সার্চ</span></button>
+    <button type="button" onclick="toggleCart()"><span>🛒</span><span>কার্ট</span></button>
+    <a href="[https://wa.me/8801994444996](https://wa.me/8801994444996)" target="_blank" rel="noopener"><span>💬</span><span>সাপোর্ট</span></a>
   </div>
 
-  <!-- Footer -->
-  <footer class="bg-zypoDark text-white pt-10 pb-16 md:pb-10 px-4 border-t border-gray-800 mt-16">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-sm">
+  <footer>
+    <div class="footer-grid">
       <div>
-        <div class="flex items-center space-x-1.5 mb-3">
-          <span class="bg-zypoYellow text-zypoDark font-black px-2 py-0.5 rounded text-base">Z</span>
-          <span class="font-extrabold text-lg tracking-wide uppercase">ypo</span>
-        </div>
-        <p class="text-gray-400 text-xs leading-relaxed">Zypo হলো বাংলাদেশের একটি বিশ্বস্ত অনলাইন গ্যাজেট এবং লাইফস্টাইল শপ। সেরা মানের পণ্য সাশ্রয়ী মূল্যে পৌঁছে দেওয়াই আমাদের লক্ষ্য।</p>
+        <div class="footer-title">ZYPO BANGLADESH</div>
+        <p class="footer-text">সেরা মানের স্মার্ট গ্যাজেট ও লাইফস্টাইল পণ্য সাশ্রয়ী মূল্যে সারা বাংলাদেশে পৌঁছে দেওয়াই আমাদের লক্ষ্য।</p>
       </div>
       <div>
-        <h4 class="font-bold text-zypoYellow mb-3 uppercase text-xs tracking-wider">গ্রাহক সেবা ও তথ্য</h4>
-        <ul class="space-y-2 text-xs text-gray-400">
-          <li>📞 হটলাইন ও WhatsApp: +8801994444996</li>
-          <li>📍 ঠিকানা: ঢাকা, বাংলাদেশ</li>
-          <li>🚚 সারা বাংলাদেশে ক্যাশ অন ডেলিভারি সুবিধা</li>
-        </ul>
+        <div class="footer-title">গ্রাহক সেবা</div>
+        <p class="footer-text">📞 হটলাইন ও WhatsApp: +8801994444996<br>📍 ঢাকা, বাংলাদেশ<br>🚚 ক্যাশ অন ডেলিভারি সুবিধা</p>
       </div>
       <div>
-        <h4 class="font-bold text-zypoYellow mb-3 uppercase text-xs tracking-wider">সরাসরি যোগাযোগ</h4>
-        <p class="text-xs text-gray-400 mb-3">যেকোনো পণ্যের বিস্তারিত জানতে বা অর্ডার করতে মেসেজ দিন।</p>
-        <a href="[https://wa.me/8801994444996](https://wa.me/8801994444996)" target="_blank" rel="noopener" class="inline-block bg-zypoYellow text-zypoDark text-xs font-black px-4 py-2 rounded-lg hover:bg-yellow-400 transition">WhatsApp-এ মেসেজ দিন</a>
+        <div class="footer-title">সরাসরি যোগাযোগ</div>
+        <a href="[https://wa.me/8801994444996](https://wa.me/8801994444996)" target="_blank" rel="noopener" style="display:inline-block; background:var(--yellow); color:var(--dark); font-weight:800; padding:8px 14px; border-radius:8px; text-decoration:none; font-size:12px;">WhatsApp-এ মেসেজ দিন</a>
       </div>
     </div>
-    <div class="max-w-6xl mx-auto border-t border-gray-800 pt-4 text-center text-xs text-gray-500">
+    <div style="text-align:center; color:#6B7280; font-size:11px; margin-top:24px; border-top:1px solid #262626; padding-top:16px;">
       &copy; 2026 Zypo Bangladesh. All rights reserved.
     </div>
   </footer>
 
   <script>
-    let allProducts = [];
-    let filteredProducts = [];
-    let currentCategory = 'all';
-    let cart = [];
+    var allProducts = [];
+    var filteredProducts = [];
+    var currentCategory = 'all';
+    var cart = [];
 
     function escapeHtml(str) {
       return String(str || '')
@@ -231,22 +230,21 @@
     function extractProductArray(payload) {
       if (Array.isArray(payload)) return payload;
       if (!payload || typeof payload !== 'object') return [];
-
-      const candidates = [
+      var candidates = [
         payload.products,
         payload.items,
         payload.data,
         payload.data && payload.data.products,
         payload.data && payload.data.items
       ];
-
-      for (const item of candidates) {
-        if (Array.isArray(item)) return item;
+      for (var i = 0; i < candidates.length; i++) {
+        if (Array.isArray(candidates[i])) return candidates[i];
       }
-
-      for (const key of Object.keys(payload)) {
-        if (Array.isArray(payload[key]) && payload[key].length > 0 && typeof payload[key][0] === 'object') {
-          return payload[key];
+      var keys = Object.keys(payload);
+      for (var j = 0; j < keys.length; j++) {
+        var val = payload[keys[j]];
+        if (Array.isArray(val) && val.length > 0 && typeof val[0] === 'object') {
+          return val;
         }
       }
       return [];
@@ -268,112 +266,91 @@
       return true;
     }
 
-    async function loadProducts() {
-      const statusMsg = document.getElementById('status-msg');
-      const countBadge = document.getElementById('product-count');
+    function loadProducts() {
+      var statusMsg = document.getElementById('status-msg');
+      var countBadge = document.getElementById('product-count');
 
-      try {
-        const res = await fetch('/api/products');
-        const result = await res.json();
+      fetch('/api/products')
+        .then(function(res) {
+          return res.json().then(function(data) {
+            return { ok: res.ok, data: data };
+          });
+        })
+        .then(function(result) {
+          if (!result.ok) {
+            statusMsg.innerHTML = '<span style="color:#DC2626;">API ত্রুটি: ' + escapeHtml(result.data.error || 'ডেটা লোড হয়নি') + '</span>';
+            countBadge.innerText = 'ত্রুটি';
+            return;
+          }
 
-        if (!res.ok) {
-          statusMsg.innerHTML = '<span class="text-red-600 font-bold">API ত্রুটি: ' + escapeHtml(result.error || 'ডেটা লোড করতে সমস্যা হয়েছে') + '</span>';
+          var products = extractProductArray(result.data);
+          if (products.length === 0) {
+            statusMsg.innerHTML = 'স্টোরে কোনো প্রোডাক্ট পাওয়া যায়নি।';
+            countBadge.innerText = '০ পণ্য';
+            return;
+          }
+
+          allProducts = products;
+          filteredProducts = products.slice();
+          statusMsg.style.display = 'none';
+          buildCategoryTabs(allProducts);
+          renderProducts(filteredProducts);
+        })
+        .catch(function(err) {
+          statusMsg.innerHTML = '<span style="color:#DC2626;">লোড করতে সমস্যা হয়েছে: ' + escapeHtml(err.message) + '</span>';
           countBadge.innerText = 'ত্রুটি';
-          return;
-        }
-
-        const products = extractProductArray(result);
-
-        if (products.length === 0) {
-          statusMsg.innerHTML = 'স্টোরে কোনো প্রোডাক্ট পাওয়া যায়নি।';
-          countBadge.innerText = '০ পণ্য';
-          return;
-        }
-
-        allProducts = products;
-        filteredProducts = products.slice();
-        statusMsg.style.display = 'none';
-        buildCategoryTabs(allProducts);
-        renderProducts(filteredProducts);
-      } catch (err) {
-        statusMsg.innerHTML = '<span class="text-red-600 font-bold">লোড করতে সমস্যা হয়েছে: ' + escapeHtml(err.message) + '</span>';
-        countBadge.innerText = 'ত্রুটি';
-      }
+        });
     }
 
     function buildCategoryTabs(products) {
-      const tabsContainer = document.getElementById('category-tabs');
-      const categories = Array.from(new Set(products.map(p => p.category).filter(Boolean)));
-
-      let html = '<button type="button" onclick="setCategory(\'all\')" data-cat="all" class="category-btn bg-zypoDark text-white px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition">সকল পণ্য</button>';
-      categories.forEach(cat => {
-        const safeCat = escapeHtml(cat);
-        html += '<button type="button" onclick="setCategory(this.getAttribute(\'data-cat\'))" data-cat="' + safeCat + '" class="category-btn bg-gray-100 text-gray-700 hover:bg-gray-200 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition">' + safeCat + '</button>';
-      });
+      var tabsContainer = document.getElementById('category-tabs');
+      var seen = {};
+      var html = '<button type="button" onclick="setCategory(\'all\')" data-cat="all" class="cat-btn active">সকল পণ্য</button>';
+      for (var i = 0; i < products.length; i++) {
+        var cat = products[i].category;
+        if (cat && !seen[cat]) {
+          seen[cat] = true;
+          var safeCat = escapeHtml(cat);
+          html += '<button type="button" onclick="setCategory(this.getAttribute(\'data-cat\'))" data-cat="' + safeCat + '" class="cat-btn">' + safeCat + '</button>';
+        }
+      }
       tabsContainer.innerHTML = html;
     }
 
     function renderProducts(products) {
-      const grid = document.getElementById('product-grid');
-      const countBadge = document.getElementById('product-count');
+      var grid = document.getElementById('product-grid');
+      var countBadge = document.getElementById('product-count');
       countBadge.innerText = products.length + ' পণ্য উপলব্ধ';
 
       if (products.length === 0) {
-        grid.innerHTML = '<div class="col-span-full text-center py-10 text-gray-500 bg-white rounded-xl border">কোনো মিলে যাওয়া পণ্য পাওয়া যায়নি।</div>';
+        grid.innerHTML = '<div class="status-box" style="grid-column:1/-1;">কোনো মিলে যাওয়া পণ্য পাওয়া যায়নি।</div>';
         return;
       }
 
-      grid.innerHTML = products.map((p, idx) => {
-        const img = escapeHtml(getProductImage(p));
-        const name = escapeHtml(p.name);
-        const category = escapeHtml(p.category || '');
-        const price = getProductPrice(p);
-        const maxPrice = Number(p.suggestedPriceMax || 0);
-        const inStock = isProductInStock(p);
+      var cards = '';
+      for (var idx = 0; idx < products.length; idx++) {
+        var p = products[idx];
+        var img = escapeHtml(getProductImage(p));
+        var name = escapeHtml(p.name);
+        var category = escapeHtml(p.category || '');
+        var price = getProductPrice(p);
+        var maxPrice = Number(p.suggestedPriceMax || 0);
+        var inStock = isProductInStock(p);
 
-        return '<div class="bg-white rounded-xl border border-gray-200 p-3 flex flex-col justify-between hover:border-zypoDark transition group">' +
+        cards += '<div class="card">' +
           '<div>' +
-            '<div onclick="openProductModal(' + idx + ')" class="relative overflow-hidden rounded-lg bg-zypoGray mb-3 aspect-square cursor-pointer">' +
-              '<img src="' + img + '" alt="' + name + '" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">' +
-              (category ? '<span class="absolute top-2 left-2 bg-zypoYellow text-zypoDark text-[10px] font-black px-2 py-0.5 rounded">' + category + '</span>' : '') +
-              (!inStock ? '<span class="absolute bottom-2 right-2 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">স্টক আউট</span>' : '') +
+            '<div class="card-img-wrap" onclick="openProductModal(' + idx + ')">' +
+              '<img src="' + img + '" alt="' + name + '" loading="lazy">' +
+              (category ? '<span class="badge-cat">' + category + '</span>' : '') +
+              (!inStock ? '<span class="badge-out">স্টক আউট</span>' : '') +
             '</div>' +
-            '<h3 onclick="openProductModal(' + idx + ')" class="font-bold text-xs md:text-sm text-zypoDark line-clamp-2 mb-2 leading-snug cursor-pointer hover:underline">' + name + '</h3>' +
+            '<div class="card-title" onclick="openProductModal(' + idx + ')">' + name + '</div>' +
           '</div>' +
           '<div>' +
-            '<div class="flex items-center justify-between mb-3">' +
-              '<div class="flex items-center space-x-2">' +
-                '<span class="text-zypoDark font-black text-sm md:text-base">৳' + price + '</span>' +
-                (maxPrice > price ? '<span class="text-gray-400 text-xs line-through">৳' + maxPrice + '</span>' : '') +
+            '<div class="price-row">' +
+              '<div>' +
+                '<span class="price-now">৳' + price + '</span>' +
+                (maxPrice > price ? '<span class="price-old">৳' + maxPrice + '</span>' : '') +
               '</div>' +
-              '<button type="button" onclick="openProductModal(' + idx + ')" class="text-[11px] font-bold text-gray-500 hover:text-zypoDark">বিস্তারিত</button>' +
+              '<button type="button" class="detail-link" onclick="openProductModal(' + idx + ')">বিস্তারিত</button>' +
             '</div>' +
-            '<button type="button" onclick="addToCart(' + idx + ')" ' + (!inStock ? 'disabled' : '') + ' class="w-full ' + (inStock ? 'bg-zypoDark hover:bg-black text-zypoYellow' : 'bg-gray-200 text-gray-400 cursor-not-allowed') + ' font-bold py-2 rounded-lg text-xs transition flex items-center justify-center space-x-1">' +
-              '<span>' + (inStock ? '🛒 কার্টে যোগ করুন' : 'স্টক নেই') + '</span>' +
-            '</button>' +
-          '</div>' +
-        '</div>';
-      }).join('');
-    }
-
-    function openProductModal(idx) {
-      const p = filteredProducts[idx];
-      if (!p) return;
-
-      const img = escapeHtml(getProductImage(p));
-      const name = escapeHtml(p.name);
-      const category = escapeHtml(p.category || '');
-      const price = getProductPrice(p);
-      const inStock = isProductInStock(p);
-      const desc = escapeHtml(p.description || 'বিস্তারিত তথ্যের জন্য WhatsApp-এ যোগাযোগ করুন।').replace(/\r?\n/g, '<br>');
-      const waText = encodeURIComponent('আসসালামু আলাইকুম, আমি এই পণ্যটি সম্পর্কে জানতে/অর্ডার করতে চাই: ' + p.name + ' (৳' + price + ')');
-
-      document.getElementById('modal-content').innerHTML =
-        '<div class="bg-zypoGray rounded-xl overflow-hidden aspect-square">' +
-          '<img src="' + img + '" alt="' + name + '" class="w-full h-full object-cover">' +
-        '</div>' +
-        '<div class="flex flex-col justify-between">' +
-          '<div>' +
-            (category ? '<span class="bg-zypoYellow text-zypoDark text-xs font-black px-2.5 py-0.5 rounded">' + category + '</span>' : '') +
-            '<h2 class="text-lg md:text-xl font-black text-zypoDark mt-2 mb-2">' + name + '</h2>' +
-            '<div class="flex items-cent
