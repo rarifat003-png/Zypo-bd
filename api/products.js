@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   const API_KEY = process.env.BUSINESS_KORO_API_KEY;
 
   if (!API_KEY) {
@@ -19,4 +19,4 @@ export default async function handler(req, res) {
   } catch (error) {
     return res.status(500).json({ error: 'প্রোডাক্ট লোড করতে সমস্যা হয়েছে।' });
   }
-}
+};
