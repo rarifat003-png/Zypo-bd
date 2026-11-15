@@ -19,7 +19,7 @@ grid.innerHTML = products.map((p, index) => {
         }).join('');
 
       } catch (err) {
-        statusMsg.innerHTML = <span class="text-red-600 font-bold">কোড রান করতে সমস্যা হয়েছে: ${err.message}</span>;
+        statusMsg.innerHTML = <span class="text-red-500">লোড করতে সমস্যা হয়েছে: ${err.message}</span>;
       }
     }
 
