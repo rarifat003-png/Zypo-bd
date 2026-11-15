@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zypo - Online Gadget Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <!-- Top Bar -->
+  <div class="bg-black text-white text-center py-2 text-xs md:text-sm px-2">
+    🎉 Zypo-তে স্বাগতম! সারা বাংলাদেশে ক্যাশ অন ডেলিভারি। WhatsApp: +8801994444996
+  </div>
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-1">
+        <span class="bg-yellow-400 text-black font-extrabold px-2.5 py-1 rounded text-xl">Z</span>
+        <span class="font-extrabold text-xl tracking-wide">ypo</span>
+      </div>
+      <button onclick="toggleCart()" class="relative p-2 bg-gray-100 rounded-full hover:bg-gray-200">
+        🛒
+        <span id="cart-count" class="absolute -top-1 -right-1 bg-yellow-400 text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="bg-white border-b py-6 px-4 text-center">
+    <h1 class="text-xl md:text-3xl font-extrabold text-gray-800 leading-snug">
+      স্মার্ট গ্যাজেট ও লাইফস্টাইল কালেকশন 
+      <span class="bg-black text-yellow-400 px-2 py-0.5 rounded">Zypo</span>
+    </h1>
+  </section>
+
+  <!-- Product Section -->
+  <main class="max-w-6xl mx-auto px-4 py-8">
+    <h2 class="text-lg md:text-xl font-bold mb-5 text-gray-800">আমাদের পণ্যসমূহ</h2>
+    
+    <!-- Loading & Error Status -->
+    <div id="status-msg" class="text-center py-10 text-gray-500 font-medium">
+      পণ্য লোড হচ্ছে, একটু অপেক্ষা করুন...
+    </div>
+
+    <!-- Product Grid -->
+    <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+  </main>
+
+  <!-- Shopping Cart Drawer -->
+  <div id="cart-drawer" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-end">
+    <div class="bg-white w-full max-w-md h-full p-5 flex flex-col justify-between shadow-xl">
+      <div>
+        <div class="flex justify-between items-center border-b pb-3">
+          <h3 class="text-lg font-bold">আপনার শপিং কার্ট</h3>
+          <button onclick="toggleCart()" class="text-2xl font-bold text-gray-600 hover:text-black">&times;</button>
+        </div>
+        <div id="cart-items" class="my-4 space-y-3 overflow-y-auto max-h-[60vh]"></div>
+      </div>
+      <div class="border-t pt-4">
+        <div class="flex justify-between font-bold text-lg mb-4">
+          <span>মোট:</span>
+          <span id="cart-total">৳0</span>
+        </div>
+        <button onclick="checkoutWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg transition">
+          WhatsApp-এ অর্ডার করুন
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let allProducts = [];
+    let cart = [];
+
+    async function loadProducts() {
+      const statusMsg = document.getElementById('status-msg');
+      const grid = document.getElementById('product-grid');
+
+      try {
+        const res = await fetch('/api/products');
+        const result = await res.json();
+
+        const products = Array.isArray(result.data) ? result.data : 
+                         (result.data && Array.isArray(result.data.products)) ? result.data.products : 
+                         Array.isArray(result.products) ? result.products : 
+                         Array.isArray(result) ? result : [];
+
+        if (!res.ok || result.error) {
+          statusMsg.innerHTML = <span class="text-red-500">সমস্যা: ${result.error || result.message || 'API কাজ করছে না'}</span>;
+          return;
+        }
+
+        if (products.length === 0) {
+          statusMsg.innerHTML = 'আপনার Business Koro স্টোরে কোনো প্রোডাক্ট পাওয়া যায়নি।';
+          return;
+        }
+
+        allProducts = products;
+        statusMsg.style.display = 'none';
