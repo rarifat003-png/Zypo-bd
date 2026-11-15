@@ -1,8 +1,110 @@
-grid.innerHTML = products.map((p, index) => {
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zypo - Online Gadget Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <!-- Top Bar -->
+  <div class="bg-black text-white text-center py-2 text-xs md:text-sm px-2">
+    🎉 Zypo-তে স্বাগতম! সারা বাংলাদেশে ক্যাশ অন ডেলিভারি। WhatsApp: +8801994444996
+  </div>
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-1">
+        <span class="bg-yellow-400 text-black font-extrabold px-2.5 py-1 rounded text-xl">Z</span>
+        <span class="font-extrabold text-xl tracking-wide">ypo</span>
+      </div>
+      <button onclick="toggleCart()" class="relative p-2 bg-gray-100 rounded-full hover:bg-gray-200">
+        🛒
+        <span id="cart-count" class="absolute -top-1 -right-1 bg-yellow-400 text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="bg-white border-b py-6 px-4 text-center">
+    <h1 class="text-xl md:text-3xl font-extrabold text-gray-800 leading-snug">
+      স্মার্ট গ্যাজেট ও লাইফস্টাইল কালেকশন 
+      <span class="bg-black text-yellow-400 px-2 py-0.5 rounded">Zypo</span>
+    </h1>
+  </section>
+
+  <!-- Product Section -->
+  <main class="max-w-6xl mx-auto px-4 py-8">
+    <h2 class="text-lg md:text-xl font-bold mb-5 text-gray-800">আমাদের পণ্যসমূহ</h2>
+    
+    <!-- Status Message -->
+    <div id="status-msg" class="text-center py-10 text-gray-500 font-medium">
+      প্রোডাক্ট লোড হচ্ছে, একটু অপেক্ষা করুন...
+    </div>
+
+    <!-- Product Grid -->
+    <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+  </main>
+
+  <!-- Shopping Cart Drawer -->
+  <div id="cart-drawer" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-end">
+    <div class="bg-white w-full max-w-md h-full p-5 flex flex-col justify-between shadow-xl">
+      <div>
+        <div class="flex justify-between items-center border-b pb-3">
+          <h3 class="text-lg font-bold">আপনার শপিং কার্ট</h3>
+          <button onclick="toggleCart()" class="text-2xl font-bold text-gray-600 hover:text-black">&times;</button>
+        </div>
+        <div id="cart-items" class="my-4 space-y-3 overflow-y-auto max-h-[60vh]"></div>
+      </div>
+      <div class="border-t pt-4">
+        <div class="flex justify-between font-bold text-lg mb-4">
+          <span>মোট:</span>
+          <span id="cart-total">৳0</span>
+        </div>
+        <button onclick="checkoutWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg transition">
+          WhatsApp-এ অর্ডার করুন
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let allProducts = [];
+    let cart = [];
+
+    async function loadProducts() {
+      const statusMsg = document.getElementById('status-msg');
+      const grid = document.getElementById('product-grid');
+
+      try {
+        const res = await fetch('/api/products');
+        const result = await res.json();
+
+        const products = Array.isArray(result.data) ? result.data : 
+                         (result.data && Array.isArray(result.data.products)) ? result.data.products : 
+                         Array.isArray(result.products) ? result.products : 
+                         Array.isArray(result) ? result : [];
+
+        if (!res.ok) {
+          statusMsg.innerHTML = `<span class="text-red-500">API ত্রুটি: ${result.error || 'সমস্যা হয়েছে'}</span>`;
+          return;
+        }
+
+        if (products.length === 0) {
+          statusMsg.innerHTML = 'স্টোরে কোনো প্রোডাক্ট পাওয়া যায়নি।';
+          return;
+        }
+
+        allProducts = products;
+        statusMsg.style.display = 'none';
+
+        grid.innerHTML = products.map((p, index) => {
           const img = (p.images && p.images.length > 0) ? p.images[0] : (p.image || 'https://via.placeholder.com/300?text=No+Image');
-          const price = p.suggestedPrice  p.sellingPrice  p.price  p.minimumSellingPrice  0;
+          const price = p.suggestedPrice || p.sellingPrice || p.price || p.minimumSellingPrice || 0;
           
-          return 
+          return `
             <div class="bg-white rounded-xl shadow-sm border p-3 flex flex-col justify-between hover:shadow-md transition">
               <div>
                 <img src="${img}" alt="${p.name}" class="w-full h-36 md:h-44 object-cover rounded-lg mb-3 bg-gray-100">
@@ -15,17 +117,17 @@ grid.innerHTML = products.map((p, index) => {
                 </button>
               </div>
             </div>
-          ;
+          `;
         }).join('');
 
       } catch (err) {
-        statusMsg.innerHTML = <span class="text-red-500">লোড করতে সমস্যা হয়েছে: ${err.message}</span>;
+        statusMsg.innerHTML = `<span class="text-red-500">লোড করতে সমস্যা হয়েছে: ${err.message}</span>`;
       }
     }
 
     function addToCart(index) {
       const p = allProducts[index];
-      const price = p.suggestedPrice  p.sellingPrice  p.price  p.minimumSellingPrice  0;
+      const price = p.suggestedPrice || p.sellingPrice || p.price || p.minimumSellingPrice || 0;
       cart.push({ name: p.name, price: Number(price) });
       updateCartUI();
     }
@@ -49,7 +151,7 @@ grid.innerHTML = products.map((p, index) => {
       let total = 0;
       itemsDiv.innerHTML = cart.map((item, i) => {
         total += item.price;
-        return 
+        return `
           <div class="flex justify-between items-center border-b pb-2 text-sm">
             <span class="font-medium pr-2">${item.name}</span>
             <div class="flex items-center space-x-2 shrink-0">
@@ -57,7 +159,7 @@ grid.innerHTML = products.map((p, index) => {
               <button onclick="removeFromCart(${i})" class="text-red-500 font-bold px-1">&times;</button>
             </div>
           </div>
-        ;
+        `;
       }).join('');
 
       totalSpan.innerText = '৳' + total;
@@ -72,11 +174,11 @@ grid.innerHTML = products.map((p, index) => {
       let text = 'আসসালামু আলাইকুম, আমি Zypo থেকে নিচের পণ্যগুলো অর্ডার করতে চাই:%0A%0A';
       let total = 0;
       cart.forEach((item, i) => {
-        text += ${i + 1}. ${item.name} - ৳${item.price}%0A;
+        text += `${i + 1}. ${item.name} - ৳${item.price}%0A`;
         total += item.price;
       });
-      text += %0Aমোট বিল: ৳${total};
-      window.open(https://wa.me/8801994444996?text=${text}, '_blank');
+      text += `%0Aমোট বিল: ৳${total}`;
+      window.open(`https://wa.me/8801994444996?text=${text}`, '_blank');
     }
 
     updateCartUI();
