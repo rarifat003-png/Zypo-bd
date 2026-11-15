@@ -7,9 +7,9 @@
   <meta name="description" content="Zypo Bangladesh - সেরা মূল্যে অরিজিনাল স্মার্ট গ্যাজেট ও লাইফস্টাইল কালেকশন। সারা বাংলাদেশে ক্যাশ অন ডেলিভারি।">
   <meta property="og:title" content="Zypo - Online Gadget Store">
   <meta property="og:description" content="সেরা মূল্যে প্রিমিয়াম এবং টেকসই গ্যাজেটের নির্ভরযোগ্য ঠিকানা।">
-  <meta property="og:url" content="https://zypo-bd.vercel.app/">
+  <meta property="og:url" content="[https://zypo-bd.vercel.app/](https://zypo-bd.vercel.app/)">
   <meta property="og:type" content="website">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -48,7 +48,7 @@
       </div>
 
       <!-- Cart Button -->
-      <button onclick="toggleCart()" class="relative p-2.5 bg-zypoGray rounded-full hover:bg-gray-200 transition flex items-center justify-center">
+      <button type="button" onclick="toggleCart()" class="relative p-2.5 bg-zypoGray rounded-full hover:bg-gray-200 transition flex items-center justify-center">
         🛒
         <span id="cart-count" class="absolute -top-1 -right-1 bg-zypoYellow text-zypoDark text-xs font-black rounded-full h-5 w-5 flex items-center justify-center">0</span>
       </button>
@@ -78,7 +78,7 @@
   <div class="bg-white border-b border-gray-200 sticky top-[61px] md:top-[65px] z-30">
     <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
       <div id="category-tabs" class="overflow-x-auto flex space-x-2">
-        <button onclick="setCategory('all')" class="category-btn bg-zypoDark text-white px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition">সকল পণ্য</button>
+        <button type="button" onclick="setCategory('all')" data-cat="all" class="category-btn bg-zypoDark text-white px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition">সকল পণ্য</button>
       </div>
       <div class="flex items-center space-x-2 shrink-0">
         <select id="sort-select" onchange="filterProducts()" class="bg-zypoGray border border-gray-300 rounded-lg px-3 py-1.5 text-xs font-bold text-zypoDark focus:outline-none">
@@ -110,7 +110,7 @@
   <!-- Quick View Product Modal -->
   <div id="product-modal" class="fixed inset-0 bg-black/60 hidden z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-5 md:p-6 relative">
-      <button onclick="closeProductModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-zypoGray flex items-center justify-center text-lg font-bold hover:bg-gray-200">&times;</button>
+      <button type="button" onclick="closeProductModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-zypoGray flex items-center justify-center text-lg font-bold hover:bg-gray-200">&times;</button>
       <div id="modal-content" class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start"></div>
     </div>
   </div>
@@ -121,7 +121,7 @@
       <div>
         <div class="flex justify-between items-center border-b border-gray-200 pb-4">
           <h3 class="text-lg font-black tracking-tight">আপনার শপিং কার্ট ও অর্ডার</h3>
-          <button onclick="toggleCart()" class="text-2xl font-bold text-gray-400 hover:text-zypoDark">&times;</button>
+          <button type="button" onclick="toggleCart()" class="text-2xl font-bold text-gray-400 hover:text-zypoDark">&times;</button>
         </div>
 
         <!-- Cart Items List -->
@@ -156,7 +156,7 @@
             <span id="cart-total" class="text-green-600">৳100</span>
           </div>
         </div>
-        <button onclick="checkoutWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl transition flex items-center justify-center space-x-2 text-sm md:text-base">
+        <button type="button" onclick="checkoutWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl transition flex items-center justify-center space-x-2 text-sm md:text-base">
           <span>💬 WhatsApp-এ অর্ডার পাঠান</span>
         </button>
         <p class="text-[11px] text-gray-400 text-center mt-2">WhatsApp-এ মেসেজ পাঠানোর পর আমাদের প্রতিনিধি কল করে অর্ডার নিশ্চিত করবেন।</p>
@@ -170,15 +170,15 @@
       <span class="text-base">🏠</span>
       <span>হোম</span>
     </a>
-    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center text-xs font-bold text-gray-500 hover:text-zypoDark">
+    <button type="button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center text-xs font-bold text-gray-500 hover:text-zypoDark">
       <span class="text-base">🔍</span>
       <span>সার্চ</span>
     </button>
-    <button onclick="toggleCart()" class="flex flex-col items-center text-xs font-bold text-gray-500 hover:text-zypoDark">
+    <button type="button" onclick="toggleCart()" class="flex flex-col items-center text-xs font-bold text-gray-500 hover:text-zypoDark">
       <span class="text-base">🛒</span>
       <span>কার্ট</span>
     </button>
-    <a href="https://wa.me/8801994444996" target="_blank" class="flex flex-col items-center text-xs font-bold text-green-600">
+    <a href="[https://wa.me/8801994444996](https://wa.me/8801994444996)" target="_blank" rel="noopener" class="flex flex-col items-center text-xs font-bold text-green-600">
       <span class="text-base">💬</span>
       <span>সাপোর্ট</span>
     </a>
@@ -205,7 +205,7 @@
       <div>
         <h4 class="font-bold text-zypoYellow mb-3 uppercase text-xs tracking-wider">সরাসরি যোগাযোগ</h4>
         <p class="text-xs text-gray-400 mb-3">যেকোনো পণ্যের বিস্তারিত জানতে বা অর্ডার করতে মেসেজ দিন।</p>
-        <a href="https://wa.me/8801994444996" target="_blank" class="inline-block bg-zypoYellow text-zypoDark text-xs font-black px-4 py-2 rounded-lg hover:bg-yellow-400 transition">WhatsApp-এ মেসেজ দিন</a>
+        <a href="[https://wa.me/8801994444996](https://wa.me/8801994444996)" target="_blank" rel="noopener" class="inline-block bg-zypoYellow text-zypoDark text-xs font-black px-4 py-2 rounded-lg hover:bg-yellow-400 transition">WhatsApp-এ মেসেজ দিন</a>
       </div>
     </div>
     <div class="max-w-6xl mx-auto border-t border-gray-800 pt-4 text-center text-xs text-gray-500">
@@ -215,27 +215,57 @@
 
   <script>
     let allProducts = [];
+    let filteredProducts = [];
     let currentCategory = 'all';
     let cart = [];
 
-    // Helper to recursively locate the product array regardless of wrapper key
-    function extractProductArray(obj) {
-      if (Array.isArray(obj)) return obj;
-      if (obj && typeof obj === 'object') {
-        if (Array.isArray(obj.items)) return obj.items;
-        if (Array.isArray(obj.products)) return obj.products;
-        if (Array.isArray(obj.data)) return obj.data;
-        if (obj.data && typeof obj.data === 'object') {
-          if (Array.isArray(obj.data.items)) return obj.data.items;
-          if (Array.isArray(obj.data.products)) return obj.data.products;
-        }
-        for (const key of Object.keys(obj)) {
-          if (Array.isArray(obj[key]) && obj[key].length > 0 && obj[key][0].name) {
-            return obj[key];
-          }
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function extractProductArray(payload) {
+      if (Array.isArray(payload)) return payload;
+      if (!payload || typeof payload !== 'object') return [];
+
+      const candidates = [
+        payload.products,
+        payload.items,
+        payload.data,
+        payload.data && payload.data.products,
+        payload.data && payload.data.items
+      ];
+
+      for (const item of candidates) {
+        if (Array.isArray(item)) return item;
+      }
+
+      for (const key of Object.keys(payload)) {
+        if (Array.isArray(payload[key]) && payload[key].length > 0 && typeof payload[key][0] === 'object') {
+          return payload[key];
         }
       }
       return [];
+    }
+
+    function getProductPrice(p) {
+      return Number(p.suggestedPrice || p.sellingPrice || p.price || p.minimumSellingPrice || 0);
+    }
+
+    function getProductImage(p) {
+      if (p.image) return p.image;
+      if (Array.isArray(p.images) && p.images.length > 0) return p.images[0];
+      return '[https://via.placeholder.com/400x400?text=Zypo](https://via.placeholder.com/400x400?text=Zypo)';
+    }
+
+    function isProductInStock(p) {
+      if (p.inStock === false) return false;
+      if (typeof p.stockQuantity === 'number' && p.stockQuantity <= 0) return false;
+      return true;
     }
 
     async function loadProducts() {
@@ -247,7 +277,8 @@
         const result = await res.json();
 
         if (!res.ok) {
-          statusMsg.innerHTML = `<span class="text-red-600 font-bold">API ত্রুটি: ${result.error || 'ডেটা লোড করতে সমস্যা হয়েছে'}</span>`;
+          statusMsg.innerHTML = '<span class="text-red-600 font-bold">API ত্রুটি: ' + escapeHtml(result.error || 'ডেটা লোড করতে সমস্যা হয়েছে') + '</span>';
+          countBadge.innerText = 'ত্রুটি';
           return;
         }
 
@@ -260,110 +291,89 @@
         }
 
         allProducts = products;
+        filteredProducts = products.slice();
         statusMsg.style.display = 'none';
         buildCategoryTabs(allProducts);
-        renderProducts(allProducts);
-
+        renderProducts(filteredProducts);
       } catch (err) {
-        statusMsg.innerHTML = `<span class="text-red-600 font-bold">লোড করতে সমস্যা হয়েছে: ${err.message}</span>`;
+        statusMsg.innerHTML = '<span class="text-red-600 font-bold">লোড করতে সমস্যা হয়েছে: ' + escapeHtml(err.message) + '</span>';
+        countBadge.innerText = 'ত্রুটি';
       }
     }
 
     function buildCategoryTabs(products) {
       const tabsContainer = document.getElementById('category-tabs');
-      const categories = [...new Set(products.map(p => p.category).filter(Boolean))];
-      
-      let html = `<button onclick="setCategory('all')" data-cat="all" class="category-btn bg-zypoDark text-white px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition">সকল পণ্য</button>`;
+      const categories = Array.from(new Set(products.map(p => p.category).filter(Boolean)));
+
+      let html = '<button type="button" onclick="setCategory(\'all\')" data-cat="all" class="category-btn bg-zypoDark text-white px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition">সকল পণ্য</button>';
       categories.forEach(cat => {
-        html += `<button onclick="setCategory('${cat}')" data-cat="${cat}" class="category-btn bg-gray-100 text-gray-700 hover:bg-gray-200 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition">${cat}</button>`;
+        const safeCat = escapeHtml(cat);
+        html += '<button type="button" onclick="setCategory(this.getAttribute(\'data-cat\'))" data-cat="' + safeCat + '" class="category-btn bg-gray-100 text-gray-700 hover:bg-gray-200 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition">' + safeCat + '</button>';
       });
       tabsContainer.innerHTML = html;
-    }
-
-    function getProductPrice(p) {
-      return Number(p.suggestedPrice || p.sellingPrice || p.price || p.minimumSellingPrice || 0);
-    }
-
-    function getProductImage(p) {
-      if (p.image) return p.image;
-      if (Array.isArray(p.images) && p.images.length > 0) return p.images[0];
-      return 'https://via.placeholder.com/400x400?text=Zypo';
     }
 
     function renderProducts(products) {
       const grid = document.getElementById('product-grid');
       const countBadge = document.getElementById('product-count');
-      countBadge.innerText = `${products.length} পণ্য উপলব্ধ`;
+      countBadge.innerText = products.length + ' পণ্য উপলব্ধ';
 
       if (products.length === 0) {
-        grid.innerHTML = `<div class="col-span-full text-center py-10 text-gray-500 bg-white rounded-xl border">কোনো মিলে যাওয়া পণ্য পাওয়া যায়নি।</div>`;
+        grid.innerHTML = '<div class="col-span-full text-center py-10 text-gray-500 bg-white rounded-xl border">কোনো মিলে যাওয়া পণ্য পাওয়া যায়নি।</div>';
         return;
       }
 
-      grid.innerHTML = products.map((p, index) => {
-        const img = getProductImage(p);
+      grid.innerHTML = products.map((p, idx) => {
+        const img = escapeHtml(getProductImage(p));
+        const name = escapeHtml(p.name);
+        const category = escapeHtml(p.category || '');
         const price = getProductPrice(p);
         const maxPrice = Number(p.suggestedPriceMax || 0);
-        const inStock = p.inStock !== false && (p.stockQuantity === undefined || p.stockQuantity > 0);
-        const productId = p.id || index;
+        const inStock = isProductInStock(p);
 
-        return `
-          <div class="bg-white rounded-xl border border-gray-200 p-3 flex flex-col justify-between hover:border-zypoDark transition group">
-            <div>
-              <div onclick="openProductModal('${productId}')" class="relative overflow-hidden rounded-lg bg-zypoGray mb-3 aspect-square cursor-pointer">
-                <img src="${img}" alt="${p.name}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                ${p.category ? `<span class="absolute top-2 left-2 bg-zypoYellow text-zypoDark text-[10px] font-black px-2 py-0.5 rounded">${p.category}</span>` : ''}
-                ${!inStock ? `<span class="absolute bottom-2 right-2 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">স্টক আউট</span>` : ''}
-              </div>
-              <h3 onclick="openProductModal('${productId}')" class="font-bold text-xs md:text-sm text-zypoDark line-clamp-2 mb-2 leading-snug cursor-pointer hover:underline">${p.name}</h3>
-            </div>
-            <div>
-              <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center space-x-2">
-                  <span class="text-zypoDark font-black text-sm md:text-base">৳${price}</span>
-                  ${maxPrice > price ? `<span class="text-gray-400 text-xs line-through">৳${maxPrice}</span>` : ''}
-                </div>
-                <button onclick="openProductModal('${productId}')" class="text-[11px] font-bold text-gray-500 hover:text-zypoDark">বিস্তারিত</button>
-              </div>
-              <button onclick="addToCartById('${productId}')" ${!inStock ? 'disabled' : ''} class="w-full ${inStock ? 'bg-zypoDark hover:bg-black text-zypoYellow' : 'bg-gray-200 text-gray-400 cursor-not-allowed'} font-bold py-2 rounded-lg text-xs transition flex items-center justify-center space-x-1">
-                <span>${inStock ? '🛒 কার্টে যোগ করুন' : 'স্টক নেই'}</span>
-              </button>
-            </div>
-          </div>
-        `;
+        return '<div class="bg-white rounded-xl border border-gray-200 p-3 flex flex-col justify-between hover:border-zypoDark transition group">' +
+          '<div>' +
+            '<div onclick="openProductModal(' + idx + ')" class="relative overflow-hidden rounded-lg bg-zypoGray mb-3 aspect-square cursor-pointer">' +
+              '<img src="' + img + '" alt="' + name + '" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">' +
+              (category ? '<span class="absolute top-2 left-2 bg-zypoYellow text-zypoDark text-[10px] font-black px-2 py-0.5 rounded">' + category + '</span>' : '') +
+              (!inStock ? '<span class="absolute bottom-2 right-2 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">স্টক আউট</span>' : '') +
+            '</div>' +
+            '<h3 onclick="openProductModal(' + idx + ')" class="font-bold text-xs md:text-sm text-zypoDark line-clamp-2 mb-2 leading-snug cursor-pointer hover:underline">' + name + '</h3>' +
+          '</div>' +
+          '<div>' +
+            '<div class="flex items-center justify-between mb-3">' +
+              '<div class="flex items-center space-x-2">' +
+                '<span class="text-zypoDark font-black text-sm md:text-base">৳' + price + '</span>' +
+                (maxPrice > price ? '<span class="text-gray-400 text-xs line-through">৳' + maxPrice + '</span>' : '') +
+              '</div>' +
+              '<button type="button" onclick="openProductModal(' + idx + ')" class="text-[11px] font-bold text-gray-500 hover:text-zypoDark">বিস্তারিত</button>' +
+            '</div>' +
+            '<button type="button" onclick="addToCart(' + idx + ')" ' + (!inStock ? 'disabled' : '') + ' class="w-full ' + (inStock ? 'bg-zypoDark hover:bg-black text-zypoYellow' : 'bg-gray-200 text-gray-400 cursor-not-allowed') + ' font-bold py-2 rounded-lg text-xs transition flex items-center justify-center space-x-1">' +
+              '<span>' + (inStock ? '🛒 কার্টে যোগ করুন' : 'স্টক নেই') + '</span>' +
+            '</button>' +
+          '</div>' +
+        '</div>';
       }).join('');
     }
 
-    function openProductModal(identifier) {
-      const p = allProducts.find((item, idx) => (item.id == identifier || idx == identifier));
+    function openProductModal(idx) {
+      const p = filteredProducts[idx];
       if (!p) return;
 
-      const img = getProductImage(p);
+      const img = escapeHtml(getProductImage(p));
+      const name = escapeHtml(p.name);
+      const category = escapeHtml(p.category || '');
       const price = getProductPrice(p);
-      const inStock = p.inStock !== false && (p.stockQuantity === undefined || p.stockQuantity > 0);
-      const desc = (p.description || 'বিস্তারিত তথ্যের জন্য WhatsApp-এ যোগাযোগ করুন।').replace(/\n/g, '<br>');
+      const inStock = isProductInStock(p);
+      const desc = escapeHtml(p.description || 'বিস্তারিত তথ্যের জন্য WhatsApp-এ যোগাযোগ করুন।').replace(/\r?\n/g, '<br>');
+      const waText = encodeURIComponent('আসসালামু আলাইকুম, আমি এই পণ্যটি সম্পর্কে জানতে/অর্ডার করতে চাই: ' + p.name + ' (৳' + price + ')');
 
-      document.getElementById('modal-content').innerHTML = `
-        <div class="bg-zypoGray rounded-xl overflow-hidden aspect-square">
-          <img src="${img}" alt="${p.name}" class="w-full h-full object-cover">
-        </div>
-        <div class="flex flex-col justify-between">
-          <div>
-            ${p.category ? `<span class="bg-zypoYellow text-zypoDark text-xs font-black px-2.5 py-0.5 rounded">${p.category}</span>` : ''}
-            <h2 class="text-lg md:text-xl font-black text-zypoDark mt-2 mb-2">${p.name}</h2>
-            <div class="flex items-center space-x-3 mb-3">
-              <span class="text-2xl font-black text-zypoDark">৳${price}</span>
-              <span class="text-xs font-bold px-2 py-0.5 rounded ${inStock ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">
-                ${inStock ? 'ইন স্টক' : 'স্টক আউট'}
-              </span>
-            </div>
-            <div class="text-xs text-gray-600 leading-relaxed max-h-48 overflow-y-auto pr-1 border-t border-b py-3 my-3">
-              ${desc}
-            </div>
-          </div>
-          <div class="space-y-2 mt-2">
-            <button onclick="addToCartById('${p.id || ''}'); closeProductModal();" ${!inStock ? 'disabled' : ''} class="w-full bg-zypoDark text-zypoYellow font-bold py-2.5 rounded-xl text-sm hover:bg-black transition">
-              🛒 কার্টে যোগ করুন
-            </button>
-            <a href="https://wa.me/8801994444996?text=${encodeURIComponent('আসসালামু আলাইকুম, আমি এই পণ্যটি সম্পর্কে জানতে/অর্ডার করতে চাই: ' + p.name + ' (৳' + price + ')')}" target="_blank" class="w-full bg-green-600 text-white font-bold py-2.5 rounded-xl text-sm hover:bg-green-700 transition flex items-center justify-center">
-              💬 সরা
+      document.getElementById('modal-content').innerHTML =
+        '<div class="bg-zypoGray rounded-xl overflow-hidden aspect-square">' +
+          '<img src="' + img + '" alt="' + name + '" class="w-full h-full object-cover">' +
+        '</div>' +
+        '<div class="flex flex-col justify-between">' +
+          '<div>' +
+            (category ? '<span class="bg-zypoYellow text-zypoDark text-xs font-black px-2.5 py-0.5 rounded">' + category + '</span>' : '') +
+            '<h2 class="text-lg md:text-xl font-black text-zypoDark mt-2 mb-2">' + name + '</h2>' +
+            '<div class="flex items-cent
