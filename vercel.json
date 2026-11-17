@@ -1,1 +1,4 @@
-{ "rewrites": [{ "source": "/product/:slug*", "destination": "/index.html" }] }
+{
+  "functions": { "api/og.js": { "includeFiles": "index.html" } },
+  "rewrites": [ { "source": "/product/:slug", "destination": "/api/og?slug=:slug" } ]
+}
