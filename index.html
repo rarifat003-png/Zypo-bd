@@ -619,8 +619,7 @@ function setCat(c,scroll){
   curCat=c; document.querySelectorAll('#chips .chip').forEach(function(b){ b.classList.toggle('on',b.dataset.c===c); });
   applyFilters(); if(scroll){ var s=el('products'); if(s)s.scrollIntoView({behavior:'smooth',block:'start'}); }
 }
-function onSearch(){ if(el('home-view').style.display==='none'){ goTo(null,'products'); } clearTimeout(searchTimer); searchTimer=setTimeout(applyFilters,150); }
-function applyFilters(){
+function onSearch(){ if(el('home-view').style.display==='none'){ goTo(null,'products'); } clearTimeout(searchTimer); searchTimer=setTimeout(function(){ applyFilters(); if(el('q').value.trim()&&el('home-view').style.display!=='none'){ var s=el('products'); if(s)s.scrollIntoView({behavior:'smooth',block:'start'}); } },150); }{
   if(!loaded)return;
   var q=el('q').value.toLowerCase().trim(), sort=el('f-sort').value, bud=el('f-budget').value, av=el('f-avail').value;
   filtered=allProducts.filter(function(p){
