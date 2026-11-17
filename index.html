@@ -64,7 +64,16 @@ header{background:rgba(255,255,255,.92);backdrop-filter:blur(14px);-webkit-backd
 .sl-btn.p{left:12px}.sl-btn.n{right:12px}
 .dots{position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:3}
 .dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(255,255,255,.45);cursor:pointer;padding:0;transition:.2s}.dots button.on{background:var(--y);width:26px;border-radius:5px}
-/* sections */
+/* slide images */
+.slide .sbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:75% center}
+.slide:not(.noimg) .slide-in{position:relative;z-index:2}
+.slide:not(.noimg) .stext{background:rgba(255,255,255,.92);color:#171717;padding:18px 20px;border-radius:18px;max-width:340px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.slide:not(.noimg) .stext small{background:#171717;color:#FFC800;border-color:#171717}
+.slide:not(.noimg) .stext h2{font-size:24px;margin-bottom:6px}
+.slide:not(.noimg) .stext p{display:none}
+.slide:not(.noimg) .cta{background:#171717;color:#FFC800;padding:11px 22px}
+.slide:not(.noimg) .num{display:none}
+@media(min-width:768px){.slide:not(.noimg) .stext{max-width:460px;padding:26px 30px}.slide:not(.noimg) .stext h2{font-size:34px}.slide:not(.noimg) .stext p{display:block;margin-bottom:16px}}
 main{max-width:1180px;margin:0 auto;padding:30px 16px 8px}
 .sec{margin-bottom:42px;scroll-margin-top:120px}
 .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;gap:8px}
@@ -537,8 +546,7 @@ window.addEventListener('popstate',function(){ route(); });
 function renderSlider(){
   var L=T[LANG].sl, html='', dots='';
   L.forEach(function(s,i){
-    html+='<div class="slide'+(i%2?' alt':'')+(i===slideIdx?' on':'')+'" role="group" aria-label="'+(i+1)+'/5"><div class="slide-in"><small>'+esc(s[0])+'</small><h2>'+esc(s[1])+'</h2><p>'+esc(s[2])+'</p><a class="cta" href="/#products" onclick="return goTo(event,\'products\')">'+esc(T[LANG].sl_cta)+'</a></div><div class="num">0'+(i+1)+'</div></div>';
-    dots+='<button type="button" class="'+(i===slideIdx?'on':'')+'" onclick="slideTo('+i+')" aria-label="Slide '+(i+1)+'"></button>';
+      html+='<div class="slide'+(i%2?' alt':'')+(i===slideIdx?' on':'')+'" role="group" aria-label="'+(i+1)+'/5"><img class="sbg" src="/slide-'+(i+1)+'.jpg" alt="" '+(i===0?'':'loading="lazy" ')+'onerror="this.parentNode.classList.add(\'noimg\');this.remove()"><div class="slide-in"><div class="stext"><small>'+esc(s[0])+'</small><h2>'+esc(s[1])+'</h2><p>'+esc(s[2])+'</p><a class="cta" href="/#products" onclick="return goTo(event,\'products\')">'+esc(T[LANG].sl_cta)+'</a></div></div><div class="num">0'+(i+1)+'</div></div>';
   });
   el('slides').innerHTML=html; el('dots').innerHTML=dots;
 }
