@@ -1,9 +1,0 @@
-{
-  "functions": {
-    "api/og.js": { "includeFiles": "index.html" }
-  },
-  "rewrites": [
-    { "source": "/product/:slug", "destination": "/api/og?slug=:slug" },
-    { "source": "/sitemap.xml", "destination": "/api/sitemap" }
-  ]
-}
